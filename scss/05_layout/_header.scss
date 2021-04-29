@@ -41,5 +41,16 @@
       @include responsiveMedia;
     }
   }
+
+  .buttonBurger {
+    @include mobile {
+      padding: em(
+        17
+      ); // 버튼 마다 패딩 크기 다를 수 있기 때문에 햄버거버튼에 따로 지정
+    }
+    @include desktop {
+      display: none;
+    }
+  }
 }
 // 헤더 종료 --------------------------------------------------------------------- /
