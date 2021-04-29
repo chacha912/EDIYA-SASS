@@ -32,6 +32,7 @@
     }
 
     a {
+      @include focusVisible;
       display: block;
       padding: em(18px);
     }
