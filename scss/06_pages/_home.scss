@@ -1,3 +1,57 @@
 // 이디야 홈(메인 페이지) 시작 ------------------------------------------------------------- /
 
+// 프로모션 (유튜브, 홈 공지사항, 홈 뉴스) ------------------------------------------------------ /
+.promotion {
+  background: #fc0;
+
+  @include desktop {
+    background: $grayscaleSnow;
+  }
+
+  &__inner {
+    @include desktop {
+      @include boxFixed(768px, 14px);
+      @include flexbox(row, center);
+      padding: em(62) 0 em(63);
+    }
+  }
+
+  &Youtube {
+    @include desktop {
+      width: 365px;
+      background: #fc0;
+    }
+
+    .iframeWrapper {
+      position: relative;
+      height: 0;
+      padding-bottom: 56.25%;
+      background: #fcf;
+    }
+
+    .iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__wrapper {
+    background: #fcf;
+    @include desktop {
+      width: 375px;
+    }
+  }
+
+  &Notice {
+    background-color: yellowgreen;
+    @include flexbox;
+
+    &__title {
+      background-color: skyblue;
+    }
+  }
+}
 // 이디야 홈(메인 페이지) 종료 ------------------------------------------------------------------ /
