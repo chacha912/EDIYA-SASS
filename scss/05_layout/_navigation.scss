@@ -1,7 +1,93 @@
 // 내비게이션 시작 --------------------------------------------------------------------- /
 .navigation {
   @include mobile {
-    display: none; // 잠시 안보이게 설정
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    left: 150vw;
+    right: -150vw;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    padding-top: 60px;
+    background: $grayscaleDarkGray2;
+    color: $grayscaleWhite;
+    transition: right 0.4s cubic-bezier(0.79, 0.14, 0.15, 0.86),
+      left 0.4s cubic-bezier(0.79, 0.14, 0.15, 0.86);
+    backdrop-filter: blur(2px);
+  }
+  &.is--active {
+    @include mobile {
+      left: 0;
+      right: 0;
+    }
+  }
+
+  // GNB 목록 -------------------------------------------------------------------- /
+  &__list {
+    @include desktop {
+      @include flexbox; // pc에서 가로로 배치
+    }
+  }
+
+  // GNB 아이템 ---------------------------------------------------------------- /
+  &__item {
+    @include mobile {
+      border-bottom: 1px solid rgba($primaryBlue5, 0.5);
+    }
+
+    @include desktop {
+      margin-left: em(8);
+      color: $primaryBlue;
+    }
+  }
+
+  // GNB 링크 ----------------------------------------------------------------- /
+  &__link {
+    @include focusVisible;
+    display: block;
+
+    @include mobile {
+      font-size: rem(14px);
+      padding: em(12px, 14px) em(22px, 14px); // base 값이 다르기 때문에 지정해야함
+      transition: all 0.4s ease;
+    }
+    &:hover,
+    &:focus {
+      @include mobile {
+        background: $primaryBlue6;
+      }
+    }
+
+    @include desktop {
+      padding: 8px;
+      font-size: rem(15px);
+    }
+  }
+
+  // 내비게이션 닫기 버튼 ------------------------------------------------------------ /
+  .buttonClose {
+    @include mobile {
+      @include focusVisible;
+      color: $white;
+      position: absolute;
+      z-index: 10;
+      top: 8px;
+      right: 12px;
+      padding: 10px;
+      font-size: rem(18px);
+      line-height: 1;
+      transition: all 0.4s ease;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+
+    @include desktop {
+      display: none;
+    }
   }
 }
 // 네비게이션 종료 ------------------------------------------------------------------ /
