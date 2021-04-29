@@ -2,55 +2,130 @@
 
 // 프로모션 (유튜브, 홈 공지사항, 홈 뉴스) ------------------------------------------------------ /
 .promotion {
-  background: #fc0;
-
   @include desktop {
     background: $grayscaleSnow;
   }
 
+  // 프로모션 inner (740px)
   &__inner {
     @include desktop {
-      @include boxFixed(768px, 14px);
+      @include boxFixed;
       @include flexbox(row, center);
       padding: em(62) 0 em(63);
     }
   }
 
+  // 홍보영상 (유튜브)
   &Youtube {
     @include desktop {
       width: 365px;
-      background: #fc0;
+      // 디자인 시안에서 발생한 오차로 인한 최소 높이 및 배경 설정
+      min-height: 205px;
+      background: $gradientBlue;
     }
 
     .iframeWrapper {
-      position: relative;
-      height: 0;
-      padding-bottom: 56.25%;
-      background: #fcf;
-    }
-
-    .iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      @include responsiveIframe;
     }
   }
 
+  // 홈 공지사항 및 뉴스 그룹 -------------------------------------------------------------- /
   &__wrapper {
-    background: #fcf;
     @include desktop {
       width: 375px;
     }
   }
 
+  // 이디야 홈 공지사항
   &Notice {
+    position: relative;
     background-color: yellowgreen;
     @include flexbox;
 
     &__title {
-      background-color: skyblue;
+      min-width: 125px;
+      padding: em(15) 0 0 em(15);
+      background: $gradientBlue;
+      font-size: rem(15px);
+      font-weight: 700;
+      color: $grayscaleWhite;
+    }
+
+    &__section {
+      flex-grow: 1;
+      padding: 15px 20px 15px 15px;
+      background: $grayscaleWhite;
+    }
+
+    &__subTitle {
+      font-weight: 700;
+      color: $primaryBlue;
+      margin: 0;
+    }
+
+    &__date {
+      font-size: rem(11px);
+      color: $grayscaleGray2;
+    }
+
+    &__brief {
+      font-size: rem(13px);
+      line-height: 1.5;
+      color: $grayscaleBlack2;
+      letter-spacing: -0.05em;
+      margin: 10px 0 0 0;
+    }
+
+    .buttonWrapper {
+      position: absolute;
+      bottom: 10px;
+      left: 84px;
+      @include flexbox; // inline요소라 사이공백 제거 위해
+    }
+  }
+
+  // 홈 뉴스 시작 ------------------------------------------------------------------- /
+  &News {
+    position: relative;
+    background-color: $primaryBlue;
+    color: $grayscaleWhite;
+    font-size: rem(13px);
+    padding: 15px;
+
+    &__title {
+      font-weight: bold;
+      margin: 0 0 15px 0;
+      font-size: rem(15px);
+      font-weight: 700;
+      color: $grayscaleWhite;
+    }
+
+    &__item {
+      @include flexbox(row, flex-start, center, nowrap);
+      margin-top: 5px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    &__headline {
+      flex-grow: 1;
+      margin-right: 25px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    &__date {
+      font-size: rem(12px);
+      min-width: 62px;
+    }
+
+    .svgLinkIconMore {
+      position: absolute;
+      top: 15px;
+      right: 15px;
     }
   }
 }
