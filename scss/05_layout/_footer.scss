@@ -1,3 +1,98 @@
 // 푸터 시작 --------------------------------------------------------------------- /
+.footer {
+  padding-bottom: em(30, 12);
+  background: $grayscaleBlack;
+  color: $grayscaleGray2;
+  font-size: rem(12px);
+  text-align: center;
 
+  // 푸터 inner
+  &__inner {
+    @include flexbox(column);
+  }
+
+  // 푸터 logo
+  &__logo {
+    @include autoMargin;
+    @include mobile {
+      width: 160px;
+      margin-top: em(25px);
+    }
+    @include desktop {
+      width: 180px;
+      margin-top: em(30px);
+    }
+
+    img {
+      @include responsiveMedia;
+    }
+  }
+
+  // 개인정보
+  @at-root .privacy {
+    order: -1;
+    border-bottom: 1px solid rgba($grayscaleGray3, 0.5);
+
+    @include mobile {
+      padding: em(10) em(18);
+    }
+
+    @include desktop {
+      padding: em(18) 0;
+    }
+
+    &__list {
+      @include flexbox(row, center, center, wrap);
+      @include desktop {
+        @include boxFixed;
+      }
+
+      @include mobile {
+        justify-content: flex-start; // 만약 두줄에서 왼쪽 정렬을 원한다면 따로 설정
+      }
+    }
+
+    // 개인정보 목록 링크
+    &__link {
+      display: block;
+      margin: em(4);
+      padding: em(4) em(6);
+      background: #fc0;
+    }
+  }
+}
+
+// 연락처 정보
+.address {
+  margin-top: em(17px);
+  line-height: 1.6;
+
+  &__content {
+    display: inline-block;
+    margin-bottom: em(5);
+    margin-right: em(11);
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  @include desktop {
+    @include boxFixed;
+  }
+}
+
+// 저작권 정보 -------------------------------------------------------------------- /
+.copyright {
+  text-align: center;
+  font-size: rem(11px);
+  line-height: 1.6;
+
+  @include mobile {
+    margin-top: em(15, 11);
+  }
+  @include desktop {
+    margin-top: em(20, 11);
+  }
+}
 // 푸터 종료 --------------------------------------------------------------------- /
