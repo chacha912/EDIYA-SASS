@@ -16,3 +16,15 @@
   @include autoMargin();
   @content;
 }
+
+// 반응형 이미지(비트맵)
+@mixin responsiveImg {
+  max-width: 100%;
+  height: auto;
+}
+
+// 반응형 미디어(벡터, 비디어, iframe)
+@mixin responsiveMedia {
+  width: 100%;
+  height: auto;
+}
